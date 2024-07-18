@@ -1,0 +1,25 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-consumer-postgres
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  podSelector:
+    matchLabels:
+        app.kubernetes.io/component: primary
+        app.kubernetes.io/instance: my-postgres
+        app.kubernetes.io/name: postgresql
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          kubernetes.io/metadata.name: webapp-consumer
+    # - podSelector:
+    #     matchLabels:
+    #       app: {{ .Release.Name }}-web-cve-consume
+    ports:
+    - protocol: TCP
+      port: 5432
