@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/csye7125-su24-team14/helm-postgresql/compare/v1.1.0...v1.2.0) (2024-07-31)
+
+
+### Features
+
+* allow prometheous to export postgres metrics ([b3aa943](https://github.com/csye7125-su24-team14/helm-postgresql/commit/b3aa943ea33fde5a3b341d9252793873c5729cd8))
+
 # [1.1.0](https://github.com/csye7125-su24-team14/helm-postgresql/compare/v1.0.1...v1.1.0) (2024-07-30)
 
 
