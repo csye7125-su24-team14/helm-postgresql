@@ -2,12 +2,11 @@
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: allow-consumer-postgres
-  namespace: {{ .Release.Namespace | quote }}
+  name: allow-prometheus-postgres-metrics
+  namespace: postgres
 spec:
   podSelector:
     matchLabels:
-      app.kubernetes.io/component: primary
       app.kubernetes.io/instance: my-postgres
       app.kubernetes.io/name: postgresql
   policyTypes:
@@ -16,14 +15,19 @@ spec:
   - from:
     - namespaceSelector:
         matchLabels:
+          kubernetes.io/metadata.name: istio-system
+      podSelector:
+        matchLabels:
+          app.kubernetes.io/name: prometheus
+    ports:
+    - protocol: TCP
+      port: 9187
+  - from:
+    - namespaceSelector:
+        matchLabels:
           kubernetes.io/metadata.name: webapp-consumer
     ports:
     - protocol: TCP
       port: 5432
-  - from:
-    - namespaceSelector:
-        matchLabels:
-          kubernetes.io/metadata.name: istio-system
-    ports:
-    - protocol: TCP
-      port: 5432
+  
+  
