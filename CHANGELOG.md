@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/csye7125-su24-team14/helm-postgresql/compare/v1.2.0...v1.3.0) (2024-08-12)
+
+
+### Features
+
+* updated netpol to allow grafana to postgres ([f2986af](https://github.com/csye7125-su24-team14/helm-postgresql/commit/f2986afd7e2f9e3ada43c1495c3e42a942d34599))
+
 # [1.2.0](https://github.com/csye7125-su24-team14/helm-postgresql/compare/v1.1.0...v1.2.0) (2024-07-31)
 
 
